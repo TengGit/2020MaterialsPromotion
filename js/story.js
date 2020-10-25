@@ -162,7 +162,7 @@ Story.bg = function(opt) {
 		this._bgcontainer.appendChild(newBg);
 	} else {
 		this.enableClickNext();
-		this._background.click();
+		// this._background.click();
 	}
 }
 

@@ -1,7 +1,9 @@
 (function(_, d, q, t){
 	'use strict';
-	var startSpace = 2000;
-	var animateSpace = 600;
+	var startSpace = 1000;
+	var animateSpace = 1000;
+	var pictureSpace = 1750;
+	var buttonSpace = 1750;
 	var w = 640, h = 1136, aspectRatio = w / h;
 	
 	var tree = [ 4,4, // root
@@ -108,7 +110,7 @@
 				if (tree[1] == i) {
 					var id = tree[3] + tree[0].toString().padStart(2, "0");
 					res.push(imageResource(id));
-					result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [1500]}]);
+					result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [pictureSpace]}]);
 				}
 				var id = tree[3] + i.toString().padStart(2, "0");
 				res.push(imageResource(id));
@@ -117,7 +119,7 @@
 			if (tree[1] == tree[0]) {
 				var id = tree[3] + tree[0].toString().padStart(2, "0");
 				res.push(imageResource(id));
-				result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [1500]}]);
+				result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [pictureSpace]}]);
 			}
 			
 			result.push([Story.pause]);
@@ -133,7 +135,7 @@
 				if (tree[1] == i) {
 					var id = depth.toString() + depthSeq.toString() + tree[0].toString().padStart(2, "0");
 					res.push(imageResource(id));
-					result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [1500]}]);
+					result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [pictureSpace]}]);
 				}
 				var id = depth.toString() + depthSeq.toString() + i.toString().padStart(2, "0");
 				res.push(imageResource(id));
@@ -142,7 +144,7 @@
 			if (tree[1] == tree[0]) {
 				var id = depth.toString() + depthSeq.toString() + tree[0].toString().padStart(2, "0");
 				res.push(imageResource(id));
-				result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [1500]}]);
+				result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [pictureSpace]}]);
 			}
 			var btnSeq = btn[depth], id1 = "b" + depth.toString() + btnSeq.toString(), id2 = "b" + depth.toString() + (btnSeq + 1).toString();
 			btn[depth] += 2;
@@ -150,8 +152,8 @@
 			res.push(imageResource(id2));
 			result.push([
 				Story.choice,
-				[id1, BUTTON_X1, BUTTON_Y, buildBookAndRes(book, res, tree[2], depth + 1, page, btn)],
-				[id2, BUTTON_X2, BUTTON_Y, buildBookAndRes(book, res, tree[3], depth + 1, page, btn)]
+				[id1, BUTTON_X1, BUTTON_Y, buildBookAndRes(book, res, tree[2], depth + 1, page, btn), {trans: fadeIn, transArg: [pictureSpace]}],
+				[id2, BUTTON_X2, BUTTON_Y, buildBookAndRes(book, res, tree[3], depth + 1, page, btn), {trans: fadeIn, transArg: [pictureSpace]}]
 			]);
 		}
 		
