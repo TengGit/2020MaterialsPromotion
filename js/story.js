@@ -151,14 +151,19 @@ Story.clsd = function(opt) {
 Story.bg = function(opt) {
 	this.disableClickNext();
 	var newBg = resource(opt[1], {className: "widget full"});
-	doTrans.call(this, newBg, opt.length > 2 ? opt[2] : {}).then(wrap(function(obj) {
-		var tar = obj[0];
-		tar._background && tar._bgcontainer.removeChild(tar._background);
-		tar._background = obj[1];
-		tar.enableClickNext();
-		obj[1].click();
-	}, [this, newBg]));
-	this._bgcontainer.appendChild(newBg);
+	if (this._background !== newBg) {
+		doTrans.call(this, newBg, opt.length > 2 ? opt[2] : {}).then(wrap(function(obj) {
+			var tar = obj[0];
+			tar._background && tar._bgcontainer.removeChild(tar._background);
+			tar._background = obj[1];
+			tar.enableClickNext();
+			obj[1].click();
+		}, [this, newBg]));
+		this._bgcontainer.appendChild(newBg);
+	} else {
+		this.enableClickNext();
+		this._background.click();
+	}
 }
 
 function im(name, x, y, cw, ch, opt) {

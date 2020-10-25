@@ -102,7 +102,6 @@
 		var result;
 		
 		if (typeof tree[2] === "number") {
-			--depth;
 			result = [[Story.bg, "bg" + depth.toString()]];
 			
 			for (var i = 0; i < tree[0]; i++) {
