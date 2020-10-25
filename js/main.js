@@ -4,40 +4,40 @@
 	var animateSpace = 600;
 	var w = 640, h = 1136, aspectRatio = w / h;
 	
-	var tree = [ 4,0, // root
-		[ 6,0, // 向上
-			[ 5,0, // 小路
-				[ 7,0, // 绿色
-					[ 9,0,1,"33" ],// 黄色
-					[ 9,0,3,"34" ] // 蓝色
+	var tree = [ 4,4, // root
+		[ 6,3, // 向上
+			[ 5,3, // 小路
+				[ 7,4, // 绿色
+					[ 9,4,1,"33" ],// 黄色
+					[ 9,4,3,"34" ] // 蓝色
 				],
-				[ 9,0,6,"24" ] // 无视
+				[ 9,5,6,"24" ] // 无视
 			],
-			[ 11,0, // 主路
-				[ 6,0, // 休息
-					[ 2,0, // 等待
+			[ 11,4, // 主路
+				[ 6,1, // 休息
+					[ 2,1, // 等待
 						[ 4,0,4,"42" ],// 月亮
-						[ 6,0,5,"43" ] // 繁星
+						[ 6,3,5,"43" ] // 繁星
 					],
-					[ 10,0,1,"35" ] // 入睡
+					[ 10,9,1,"35" ] // 入睡
 				],
-				[ 8,0,2,"25" ] // 继续
+				[ 8,7,2,"25" ] // 继续
 			]
 		],
-		[ 6,0, // 向下
+		[ 6,1, // 向下
 			[ 10,0, // 问路
-				[ 11,0,7,"26" ],// 集市
-				[ 11,0,5,"27" ] // 车站
+				[ 11,9,7,"26" ],// 集市
+				[ 11,3,5,"27" ] // 车站
 			],
-			[ 6,0, // 探索
-				[ 8,0, // 海滩
-					[ 7,0, // 浅水
+			[ 6,3, // 探索
+				[ 8,4, // 海滩
+					[ 7,3, // 浅水
 						[ 4,0,4,"42" ],// 月亮
-						[ 6,0,5,"43" ] // 繁星
+						[ 6,3,5,"43" ] // 繁星
 					],
 					[ 7,0,6,"36" ] // 石头
 				],
-				[ 6,0,3,"28" ] // 河流
+				[ 6,1,3,"28" ] // 河流
 			]
 		]
 	];
@@ -109,7 +109,7 @@
 				if (tree[1] == i) {
 					var id = tree[3] + tree[0].toString().padStart(2, "0");
 					res.push(imageResource(id));
-					result.push([Story.img, id, 0, 0]);
+					result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [1500]}]);
 				}
 				var id = tree[3] + i.toString().padStart(2, "0");
 				res.push(imageResource(id));
@@ -118,7 +118,7 @@
 			if (tree[1] == tree[0]) {
 				var id = tree[3] + tree[0].toString().padStart(2, "0");
 				res.push(imageResource(id));
-				result.push([Story.img, id, 0, 0]);
+				result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [1500]}]);
 			}
 			
 			result.push([Story.pause]);
@@ -134,7 +134,7 @@
 				if (tree[1] == i) {
 					var id = depth.toString() + depthSeq.toString() + tree[0].toString().padStart(2, "0");
 					res.push(imageResource(id));
-					result.push([Story.img, id, 0, 0]);
+					result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [1500]}]);
 				}
 				var id = depth.toString() + depthSeq.toString() + i.toString().padStart(2, "0");
 				res.push(imageResource(id));
@@ -143,7 +143,7 @@
 			if (tree[1] == tree[0]) {
 				var id = depth.toString() + depthSeq.toString() + tree[0].toString().padStart(2, "0");
 				res.push(imageResource(id));
-				result.push([Story.img, id, 0, 0]);
+				result.push([Story.img, id, 0, 0, {trans: fadeIn, transArg: [1500]}]);
 			}
 			var btnSeq = btn[depth], id1 = "b" + depth.toString() + btnSeq.toString(), id2 = "b" + depth.toString() + (btnSeq + 1).toString();
 			btn[depth] += 2;
