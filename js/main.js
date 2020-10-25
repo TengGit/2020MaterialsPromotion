@@ -8,36 +8,36 @@
 		[ 6,0, // 向上
 			[ 5,0, // 小路
 				[ 7,0, // 绿色
-					[ 9,0,0,"33" ],// 黄色
-					[ 9,0,2,"34" ] // 蓝色
+					[ 9,0,1,"33" ],// 黄色
+					[ 9,0,3,"34" ] // 蓝色
 				],
-				[ 9,0,5,"24" ] // 无视
+				[ 9,0,6,"24" ] // 无视
 			],
 			[ 11,0, // 主路
 				[ 6,0, // 休息
 					[ 2,0, // 等待
-						[ 4,0,3,"42" ],// 月亮
-						[ 6,0,4,"43" ] // 繁星
+						[ 4,0,4,"42" ],// 月亮
+						[ 6,0,5,"43" ] // 繁星
 					],
-					[ 10,0,0,"35" ] // 入睡
+					[ 10,0,1,"35" ] // 入睡
 				],
-				[ 8,0,1,"25" ] // 继续
+				[ 8,0,2,"25" ] // 继续
 			]
 		],
 		[ 6,0, // 向下
 			[ 10,0, // 问路
-				[ 11,0,6,"26" ],// 集市
-				[ 11,0,4,"27" ] // 车站
+				[ 11,0,7,"26" ],// 集市
+				[ 11,0,5,"27" ] // 车站
 			],
 			[ 6,0, // 探索
 				[ 8,0, // 海滩
 					[ 7,0, // 浅水
-						[ 4,0,3,"42" ],// 月亮
-						[ 6,0,4,"43" ] // 繁星
+						[ 4,0,4,"42" ],// 月亮
+						[ 6,0,5,"43" ] // 繁星
 					],
-					[ 7,0,5,"36" ] // 石头
+					[ 7,0,6,"36" ] // 石头
 				],
-				[ 6,0,2,"28" ] // 河流
+				[ 6,0,3,"28" ] // 河流
 			]
 		]
 	];
@@ -115,6 +115,11 @@
 				res.push(imageResource(id));
 				result.push([Story.img, id, 0, 0]);
 			}
+			if (tree[1] == tree[0]) {
+				var id = tree[3] + tree[0].toString().padStart(2, "0");
+				res.push(imageResource(id));
+				result.push([Story.img, id, 0, 0]);
+			}
 			
 			result.push([Story.pause]);
 			result.push([Story.jmp, tree[2]]);
@@ -132,6 +137,11 @@
 					result.push([Story.img, id, 0, 0]);
 				}
 				var id = depth.toString() + depthSeq.toString() + i.toString().padStart(2, "0");
+				res.push(imageResource(id));
+				result.push([Story.img, id, 0, 0]);
+			}
+			if (tree[1] == tree[0]) {
+				var id = depth.toString() + depthSeq.toString() + tree[0].toString().padStart(2, "0");
 				res.push(imageResource(id));
 				result.push([Story.img, id, 0, 0]);
 			}
