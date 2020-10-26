@@ -9,8 +9,8 @@ function callEach(arr, arg) {
 	}
 }
 
-function Animate(from, to, millisecond, propList = null) {
-	this.reset(from, to, millisecond, propList);
+function Animate(from, to, millisecond, propList) {
+	this.reset(from, to, millisecond, propList || null);
 }
 
 var eps = 0.001;
@@ -90,7 +90,7 @@ Animate.prototype.running = function() {
 	return !!this._counter;
 }
 
-Animate.prototype.reset = function(from, to, millisecond, propList = null) {
+Animate.prototype.reset = function(from, to, millisecond, propList) {
 	this.stop();
 	this.target = from;
 	this.data = null;

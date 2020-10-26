@@ -14,13 +14,15 @@ function setAttr(obj, attr) {
 	return obj;
 }
 
-function create(name, opt = []) {
+function create(name, opt) {
 	var result = document.createElement(name);
+	opt = opt || [];
 	return setAttr(result, opt);
 }
 
-function resource(name, opt = []) {
+function resource(name, opt) {
 	var result = _.resource.getResult(name);
+	opt = opt || [];
 	return setAttr(result, opt);
 }
 

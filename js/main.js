@@ -85,10 +85,8 @@
 		root.style.left = (sw - w) / 2 + "px";
 	}
 	
-	function imageResource(id, requireImgElement = false) {
-		var result = {src: subst(IMG_URL, id), id: id, type: t.IMAGE};
-		if (requireImgElement) result.preferXHR = false;
-		return result;
+	function imageResource(id) {
+		return {src: subst(IMG_URL, id), id: id, type: t.IMAGE};
 	}
 	
 	var res = [];
